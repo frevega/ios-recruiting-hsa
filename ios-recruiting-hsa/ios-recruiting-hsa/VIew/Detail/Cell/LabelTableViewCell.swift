@@ -49,6 +49,7 @@ class LabelTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         movieLabel.text = nil
     }
 }

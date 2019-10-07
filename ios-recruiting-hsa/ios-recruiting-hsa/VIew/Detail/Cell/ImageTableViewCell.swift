@@ -29,6 +29,7 @@ class ImageTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         movieImageView.image = UIImage(named: "placeholder")
     }
 }

@@ -13,10 +13,8 @@ class FavoriteViewController: BaseViewController {
     private let presenter: FavoritePresenter
     private let delegate: FavoriteViewDelegate
     private let datasource: FavoriteViewDataSource
-    var movies = [FavoriteMovieView]() {
-        didSet {
-            tableView.reloadData()
-        }
+    var movies: [FavoriteMovieView] {
+        return presenter.favoriteMovieArray()
     }
     
     init(presenter: FavoritePresenter,
@@ -43,12 +41,18 @@ class FavoriteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchFavoriteMovies()
+    }
+    
+    @objc
+    private func fetchFavoriteMovies() {
         presenter.favoriteMovies()
     }
     
     override func prepare() {
         super.prepare()
         prepareTableView()
+        prepareRefreshControl()
     }
     
     private func prepareTableView() {
@@ -59,18 +63,23 @@ class FavoriteViewController: BaseViewController {
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
+    private func prepareRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(fetchFavoriteMovies), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
     func delete(row index: Int) {
         presenter.deleteFavorite(movie: movies[index])
     }
 }
 
 extension FavoriteViewController: FavoriteView {
-    func show(favorite movies: [FavoriteMovieView]) {
-        self.movies.removeAll()
-        self.movies.append(contentsOf: movies);
-    }
-    
-    func deleted() {
-        presenter.favoriteMovies()
+    func show() {
+        if (tableView.refreshControl?.isRefreshing ?? false) {
+            tableView.refreshControl?.endRefreshing()
+        }
+        
+        tableView.reloadData()
     }
 }

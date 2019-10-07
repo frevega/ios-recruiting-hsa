@@ -12,9 +12,9 @@ class MovieUseCase {
         self.movieRepository = movieRepository
     }
     
-    func fetchMovies(page: Int, completionHandler: @escaping ([MovieModel]?, ErrorModel?) -> Void) {
+    func fetchMovies(page: Int, completionHandler: @escaping (MovieResponseModel?, ErrorModel?) -> Void) {
         movieRepository.fetchMovies(page: page) { (movieResponse, error) in
-            completionHandler(movieResponse?.results, error)
+            completionHandler(movieResponse, error)
         }
     }
     

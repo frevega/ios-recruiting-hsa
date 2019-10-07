@@ -36,6 +36,7 @@ class OverviewTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         movieLabel.text = nil
     }
 }

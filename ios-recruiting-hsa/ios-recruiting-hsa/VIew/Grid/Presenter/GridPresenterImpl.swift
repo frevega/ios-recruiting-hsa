@@ -5,20 +5,33 @@
 //  Created on 10-08-19.
 //
 
+import Foundation
+
 class GridPresenterImpl {
     weak var view: GridView?
     private let movieUseCase: MovieUseCase
-    private let movieViewToModel: Mapper<MovieView, MovieModel>
+    private let movieResponseViewToModel: Mapper<MovieResponseView, MovieResponseModel>
     private let errorViewToModel: Mapper<ErrorView, ErrorModel>
+    private var isFetchingPopularMovies = false
     private var popularPageNumber = 1
+    private var movies = [MovieView]()
+    private var localSearchedMovies = [MovieView]()
+    private var movieResponse: MovieResponseView? = nil
+    private var previousTotalMovieCount: Int = 0
     
     init(movieUseCase: MovieUseCase,
-         movieViewToModel: Mapper<MovieView, MovieModel>,
+         movieResponseViewToModel: Mapper<MovieResponseView, MovieResponseModel>,
          errorViewToModel: Mapper<ErrorView, ErrorModel>
         ) {
         self.movieUseCase = movieUseCase
-        self.movieViewToModel = movieViewToModel
+        self.movieResponseViewToModel = movieResponseViewToModel
         self.errorViewToModel = errorViewToModel
+    }
+    
+    private func calculateIndexPathsToReload(from newMovies: [MovieView]) -> [IndexPath] {
+        let startIndex = movies.count - newMovies.count
+        let endIndex = startIndex + newMovies.count
+        return (startIndex ..< endIndex).map { IndexPath(row: $0, section: 0) }
     }
 }
 
@@ -29,20 +42,54 @@ extension GridPresenterImpl: GridPresenter {
     }
     
     func popularMovies() {
+        guard !isFetchingPopularMovies else {
+            return
+        }
+        isFetchingPopularMovies = true
         view?.showLoading()
-        movieUseCase.fetchMovies(page: popularPageNumber) { (movieModels, error) in
+        movieUseCase.fetchMovies(page: popularPageNumber) { (responseModel, error) in
+            self.isFetchingPopularMovies = false
             self.view?.hideLoading()
-            guard let movieModels = movieModels else {
+            guard let responseModel = responseModel else {
                 if let error = error {
                     self.view?.show(error: self.errorViewToModel.reverseMap(value: error))
                 }
                 return
             }
             
-            if movieModels.count > 0 {
-                self.view?.show(popular: self.movieViewToModel.reverseMap(values: movieModels))
-                self.popularPageNumber += 1
+            if responseModel.results.count > 0 {
+                self.movieResponse = self.movieResponseViewToModel.reverseMap(value: responseModel)
+                if let movieResponse = self.movieResponse {
+                    self.movies.append(contentsOf: movieResponse.results)
+                    let indexes = movieResponse.page > 1 ? self.calculateIndexPathsToReload(from: movieResponse.results) : nil
+                    let shouldReload = self.previousTotalMovieCount != movieResponse.totalResults
+                    self.view?.show(rows: indexes, shouldReload: shouldReload)
+                    self.previousTotalMovieCount = movieResponse.totalResults
+                    self.popularPageNumber += 1
+                }
             }
+        }
+    }
+    
+    func getMovies() -> [MovieView] {
+        let movies = self.movies
+        return movies
+    }
+    
+    func getLocalSearchedMovies() -> [MovieView] {
+        let localSearchedMovies = self.localSearchedMovies
+        return localSearchedMovies
+    }
+    
+    func getTotalMovieCount() -> Int {
+        return movieResponse?.totalResults ?? 0
+    }
+    
+    func localSearchPopularMovies(text: String) {
+        localSearchedMovies = movies
+        if !text.isEmpty {
+            localSearchedMovies = movies.filter({ $0.title.lowercased().contains(text.lowercased()) })
+            view?.show(rows: nil, shouldReload: true)
         }
     }
 }

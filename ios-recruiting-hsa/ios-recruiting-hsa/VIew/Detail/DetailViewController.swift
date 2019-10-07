@@ -45,12 +45,18 @@ class DetailViewController: BaseViewController {
         delegate.attach(view: self)
         datasource.attach(view: self)
         presenter.attach(view: self)
+        fetchMovieDetail()
+    }
+    
+    @objc
+    private func fetchMovieDetail() {
         presenter.movieDetail(id: movieId)
     }
     
     override func prepare() {
         super.prepare()
         prepareTableView()
+        prepareRefreshControl()
     }
     
     private func prepareTableView() {
@@ -66,6 +72,12 @@ class DetailViewController: BaseViewController {
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
+    private func prepareRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(fetchMovieDetail), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
     func makeFavorite() {
         presenter.addFavorite(movie: movie)
     }
@@ -73,6 +85,7 @@ class DetailViewController: BaseViewController {
 
 extension DetailViewController: DetailView {
     func show(detail movie: MovieDetailView) {
+        tableView.refreshControl?.endRefreshing()
         self.movie = movie
     }
     

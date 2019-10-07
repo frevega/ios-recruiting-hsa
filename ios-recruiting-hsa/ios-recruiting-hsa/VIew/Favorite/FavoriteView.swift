@@ -6,6 +6,5 @@
 //
 
 protocol FavoriteView: BaseView {
-    func show(favorite movies: [FavoriteMovieView])
-    func deleted()
+    func show()
 }

@@ -13,6 +13,7 @@ enum Constants {
         static let saveError = "Ups! Couldn't save!"
         static let fetchError = "Ups! Couldn't fetch!"
         static let deleteError = "Ups! Couldn't delete!"
+        static let emptySearch = "Ups! Couldn't find any coincidences of %@"
     }
     
     enum Colors {

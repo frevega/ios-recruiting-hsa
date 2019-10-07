@@ -9,4 +9,5 @@ protocol FavoritePresenter {
     func attach(view: FavoriteView)
     func favoriteMovies()
     func deleteFavorite(movie: FavoriteMovieView)
+    func favoriteMovieArray() -> [FavoriteMovieView]
 }

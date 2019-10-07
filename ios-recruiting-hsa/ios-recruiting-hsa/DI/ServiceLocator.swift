@@ -96,6 +96,10 @@ class ServiceLocator {
         return MovieViewToModel()
     }
     
+    private var movieResponseViewToModel: Mapper<MovieResponseView, MovieResponseModel> {
+        return MovieResponseViewToModel(movieViewToModel: movieViewToModel)
+    }
+    
     private var movieDetailViewToModel: Mapper<MovieDetailView, MovieDetailModel> {
         return MovieDetailViewToModel()
     }
@@ -107,7 +111,7 @@ class ServiceLocator {
     // Grid
     var gridPresenter: GridPresenter {
         return GridPresenterImpl(movieUseCase: movieUseCase,
-                                 movieViewToModel: movieViewToModel,
+                                 movieResponseViewToModel: movieResponseViewToModel,
                                  errorViewToModel: errorViewToModel
         )
     }

@@ -17,40 +17,38 @@ class GridViewDelegate: NSObject {
 
 extension GridViewDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let movieId = view?.movies[indexPath.row].id,
-            let viewController = ViewFactory.viewController(viewType: .detail) as? DetailViewController {
-            viewController.movieId = movieId
+        if let view = view, let viewController = ViewFactory.viewController(viewType: .detail) as? DetailViewController {
+            var data = view.isSearchActive ? view.localSearchedMovies : view.movies
+            viewController.movieId = data[indexPath.row].id
             viewController.hidesBottomBarWhenPushed = true
-            view?.pushViewController(viewController: viewController)
+            view.pushViewController(viewController: viewController)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let view = view {
-            print("\(view.collectionView.contentOffset.y) \(view.collectionView.contentSize.height - view.collectionView.frame.size.height)")
-            if view.collectionView.contentOffset.y >= (view.collectionView.contentSize.height - view.collectionView.frame.size.height) {
-                view.endOfCollectionReached()
-            }
+            let indexPathsToReload = view.visibleIndexPathsToReload(intersecting: view.collectionView.indexPathsForVisibleItems)
+            view.collectionView.reloadItems(at: indexPathsToReload)
+//            print("\(view.collectionView.contentOffset.y) \(view.collectionView.contentSize.height - view.collectionView.frame.size.height)")
+//            if view.collectionView.contentOffset.y >= (view.collectionView.contentSize.height - view.collectionView.frame.size.height) {
+//                view.endOfCollectionReached()
+//            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,  sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let view  = view {
-            let paddingSpace = view.sectionInsets.left * (view.itemsPerRow + 1)
-            let availableWidth = collectionView.bounds.width - paddingSpace
-            let widthPerItem = availableWidth / view.itemsPerRow
-            
-            return CGSize(width: widthPerItem, height: widthPerItem + (widthPerItem * Constants.Images.gridMultiplier))
-        }
+        let paddingSpace = GridConstants.Collection.sectionInsets.left * (GridConstants.Collection.itemsPerRow + 1)
+        let availableWidth = collectionView.bounds.width - paddingSpace
+        let widthPerItem = availableWidth / GridConstants.Collection.itemsPerRow
         
-        return CGSize()
+        return CGSize(width: widthPerItem, height: widthPerItem + (widthPerItem * Constants.Images.gridMultiplier))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return view?.sectionInsets ?? UIEdgeInsets.zero
+        return GridConstants.Collection.sectionInsets 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return view?.sectionInsets.left ?? 0
+        return GridConstants.Collection.sectionInsets.left 
     }
 }

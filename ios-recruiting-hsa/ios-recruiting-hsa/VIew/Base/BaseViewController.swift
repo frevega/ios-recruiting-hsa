@@ -28,12 +28,12 @@ extension BaseViewController: BaseView {
     }
     
     func showLoading() {
-        view.isUserInteractionEnabled = false
+        //view.isUserInteractionEnabled = false
         activityIndicatorView.startAnimating()
     }
     
     func hideLoading() {
-        view.isUserInteractionEnabled = true
+//        view.isUserInteractionEnabled = true
         activityIndicatorView.stopAnimating()
     }
     

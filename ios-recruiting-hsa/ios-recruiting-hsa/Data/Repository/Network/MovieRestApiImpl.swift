@@ -19,7 +19,7 @@ class MovieRestApiImpl: MovieRestApi {
     
     func fetchMovies(page: Int, endpoint: Endpoints.Movies, completionHandler: @escaping (MovieResponseEntity?, ErrorEntity?) -> Void) {
         guard let url = URL(
-            string: String(format: endpoint.rawValue, MovieURL.Prod.url.rawValue, page, MovieURL.Prod.apiKey.rawValue)
+            string: String(format: endpoint.rawValue, MovieURL.Prod.url.rawValue, MovieURL.Prod.apiKey.rawValue, page)
         ) else {
             completionHandler(nil, ErrorEntity(statusMessage: Constants.ErrorMessages.serverError, statusCode: 0))
             return

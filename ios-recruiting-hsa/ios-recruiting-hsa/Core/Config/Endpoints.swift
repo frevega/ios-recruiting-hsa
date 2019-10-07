@@ -7,7 +7,7 @@
 
 enum Endpoints {
     enum Movies: String {
-        case popular = "%@/movie/popular?page=%d&%@"
+        case popular = "%@/movie/popular?%@&page=%d"
         case movieDetail = "%@/movie/%d?%@"
     }
 }

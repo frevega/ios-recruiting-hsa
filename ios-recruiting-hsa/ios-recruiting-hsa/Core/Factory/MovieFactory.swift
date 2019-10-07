@@ -29,9 +29,7 @@ class MovieFactory {
                                                       tag: 1
         )
         
-        let controllers = [gridController, favoritesController]
-        viewController.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
-        
+        viewController.viewControllers = [gridController, favoritesController].map { UINavigationController(rootViewController: $0)}
         viewController.tabBar.barTintColor = Constants.Colors.brand
         viewController.tabBar.tintColor = .black
         
@@ -42,11 +40,15 @@ class MovieFactory {
         let presenter = serviceLocator.gridPresenter
         let delegate = GridViewDelegate()
         let datasource = GridViewDataSource()
+        let prefetchDataSource = GridViewPrefetchDataSource()
+        let searchControllerDelegate = GridSearchResultsDelegate()
         
         let viewController = GridViewController(
             presenter: presenter,
             delegate: delegate,
-            datasource: datasource
+            datasource: datasource,
+            prefetchDataSource: prefetchDataSource,
+            searchControllerDelegate: searchControllerDelegate
         )
         
         return viewController

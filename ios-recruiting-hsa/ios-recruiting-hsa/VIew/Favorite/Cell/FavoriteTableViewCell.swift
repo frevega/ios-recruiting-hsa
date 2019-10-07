@@ -48,6 +48,7 @@ class FavoriteTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         movieImageView.image = UIImage(named: "placeholder")
         titleLabel.text = nil
         yearLabel.text = nil

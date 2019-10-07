@@ -32,7 +32,7 @@ extension DetailViewDataSource: UITableViewDataSource {
             case DetailConstants.Cells.Indexes.genere:
                 return labelCell(tableView, cellForRowAt: indexPath, text: movie.genres.joined(separator: ", "))
             case DetailConstants.Cells.Indexes.overview:
-                return overviewCell(tableView, cellForRowAt: indexPath, text: movie.overview ?? "")
+                return overviewCell(tableView, cellForRowAt: indexPath, text: movie.overview )
             default:
                 return UITableViewCell()
             }
