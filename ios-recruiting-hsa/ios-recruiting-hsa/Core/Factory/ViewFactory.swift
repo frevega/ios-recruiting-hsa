@@ -19,9 +19,9 @@ class ViewFactory {
         
         switch viewType {
         case .tab:
-            viewController = MovieFactory(serviceLocator: serviceLocator).tabBarController()
+            viewController = TabBarViewFactory(serviceLocator: serviceLocator).viewController()
         case .detail:
-            viewController = MovieFactory(serviceLocator: serviceLocator).detailViewController()
+            viewController = DetailViewFactory(serviceLocator: serviceLocator).viewController()
         }
         
         return viewController

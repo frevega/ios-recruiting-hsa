@@ -74,7 +74,7 @@
 		494442F222FBDDCD00889BF2 /* SpokenLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494442F122FBDDCD00889BF2 /* SpokenLanguageModel.swift */; };
 		494442F422FBDE0D00889BF2 /* SpokenLanguageModelToEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494442F322FBDE0D00889BF2 /* SpokenLanguageModelToEntity.swift */; };
 		49487FDD23006654001BEE92 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FDB23006654001BEE92 /* ViewFactory.swift */; };
-		49487FDE23006654001BEE92 /* MovieFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FDC23006654001BEE92 /* MovieFactory.swift */; };
+		49487FDE23006654001BEE92 /* TabBarViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FDC23006654001BEE92 /* TabBarViewFactory.swift */; };
 		49487FE2230066D5001BEE92 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FE1230066D5001BEE92 /* DetailPresenter.swift */; };
 		49487FE423006702001BEE92 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FE323006702001BEE92 /* DetailView.swift */; };
 		49487FE6230067C2001BEE92 /* MovieDetailViewToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49487FE5230067C2001BEE92 /* MovieDetailViewToModel.swift */; };
@@ -132,6 +132,14 @@
 		497B1DA822FF82690009452A /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497B1DA622FF82690009452A /* MovieCollectionViewCell.xib */; };
 		497B1DAB22FF89820009452A /* MovieViewToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B1DAA22FF89820009452A /* MovieViewToModel.swift */; };
 		497B1DAD22FF8A410009452A /* ErrorViewToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B1DAC22FF8A410009452A /* ErrorViewToModel.swift */; };
+		49C75E01234CD15600455960 /* GridCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E00234CD15600455960 /* GridCoordinator.swift */; };
+		49C75E05234CD2E300455960 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E03234CD2E300455960 /* TabBarViewController.swift */; };
+		49C75E06234CD2E300455960 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C75E04234CD2E300455960 /* TabBarViewController.xib */; };
+		49C75E09234CD3DE00455960 /* GridCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E08234CD3DE00455960 /* GridCoordinatorImpl.swift */; };
+		49C75E0B234D21AA00455960 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E0A234D21AA00455960 /* Coordinator.swift */; };
+		49C75E0D234D24CB00455960 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E0C234D24CB00455960 /* FavoriteCoordinator.swift */; };
+		49C75E0F234D24FE00455960 /* FavoriteCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E0E234D24FE00455960 /* FavoriteCoordinatorImpl.swift */; };
+		49C75E11234D2F3A00455960 /* DetailViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C75E10234D2F3A00455960 /* DetailViewFactory.swift */; };
 		49DADB5F22FCF325007D4E74 /* SpokenLanguageModelToEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DADB5E22FCF325007D4E74 /* SpokenLanguageModelToEntityTests.swift */; };
 		49DADB6122FCF408007D4E74 /* MovieResponseEntity+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DADB6022FCF408007D4E74 /* MovieResponseEntity+Mock.swift */; };
 		49DADB6322FCF477007D4E74 /* ErrorEntity.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DADB6222FCF477007D4E74 /* ErrorEntity.json */; };
@@ -219,7 +227,7 @@
 		494442F122FBDDCD00889BF2 /* SpokenLanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpokenLanguageModel.swift; sourceTree = "<group>"; };
 		494442F322FBDE0D00889BF2 /* SpokenLanguageModelToEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpokenLanguageModelToEntity.swift; sourceTree = "<group>"; };
 		49487FDB23006654001BEE92 /* ViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
-		49487FDC23006654001BEE92 /* MovieFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieFactory.swift; sourceTree = "<group>"; };
+		49487FDC23006654001BEE92 /* TabBarViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewFactory.swift; sourceTree = "<group>"; };
 		49487FE1230066D5001BEE92 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		49487FE323006702001BEE92 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		49487FE5230067C2001BEE92 /* MovieDetailViewToModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewToModel.swift; sourceTree = "<group>"; };
@@ -283,6 +291,14 @@
 		497B1DA622FF82690009452A /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		497B1DAA22FF89820009452A /* MovieViewToModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewToModel.swift; sourceTree = "<group>"; };
 		497B1DAC22FF8A410009452A /* ErrorViewToModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewToModel.swift; sourceTree = "<group>"; };
+		49C75E00234CD15600455960 /* GridCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinator.swift; sourceTree = "<group>"; };
+		49C75E03234CD2E300455960 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		49C75E04234CD2E300455960 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
+		49C75E08234CD3DE00455960 /* GridCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinatorImpl.swift; sourceTree = "<group>"; };
+		49C75E0A234D21AA00455960 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		49C75E0C234D24CB00455960 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
+		49C75E0E234D24FE00455960 /* FavoriteCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinatorImpl.swift; sourceTree = "<group>"; };
+		49C75E10234D2F3A00455960 /* DetailViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFactory.swift; sourceTree = "<group>"; };
 		49DADB5E22FCF325007D4E74 /* SpokenLanguageModelToEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpokenLanguageModelToEntityTests.swift; sourceTree = "<group>"; };
 		49DADB6022FCF408007D4E74 /* MovieResponseEntity+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieResponseEntity+Mock.swift"; sourceTree = "<group>"; };
 		49DADB6222FCF477007D4E74 /* ErrorEntity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ErrorEntity.json; sourceTree = "<group>"; };
@@ -494,7 +510,8 @@
 			isa = PBXGroup;
 			children = (
 				49487FDB23006654001BEE92 /* ViewFactory.swift */,
-				49487FDC23006654001BEE92 /* MovieFactory.swift */,
+				49487FDC23006654001BEE92 /* TabBarViewFactory.swift */,
+				49C75E10234D2F3A00455960 /* DetailViewFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -635,6 +652,7 @@
 				49487FF22300821E001BEE92 /* Base */,
 				497B1D8F22FF787A0009452A /* ViewModel */,
 				497B1DA922FF895F0009452A /* Mapper */,
+				49C75E02234CD24900455960 /* TabBar */,
 				49741AB322FCA40700E488AD /* Grid */,
 				49487FDF2300668F001BEE92 /* Detail */,
 				497B1D7722FF727F0009452A /* Favorite */,
@@ -818,6 +836,20 @@
 			path = Mapper;
 			sourceTree = "<group>";
 		};
+		49C75E02234CD24900455960 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				49C75E0A234D21AA00455960 /* Coordinator.swift */,
+				49C75E00234CD15600455960 /* GridCoordinator.swift */,
+				49C75E08234CD3DE00455960 /* GridCoordinatorImpl.swift */,
+				49C75E0C234D24CB00455960 /* FavoriteCoordinator.swift */,
+				49C75E0E234D24FE00455960 /* FavoriteCoordinatorImpl.swift */,
+				49C75E03234CD2E300455960 /* TabBarViewController.swift */,
+				49C75E04234CD2E300455960 /* TabBarViewController.xib */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -907,6 +939,7 @@
 				4955B2C722FBBC090042216F /* Assets.xcassets in Resources */,
 				49487FEE23007D7D001BEE92 /* DetailViewController.xib in Resources */,
 				49487FFA230087A1001BEE92 /* ImageTableViewCell.xib in Resources */,
+				49C75E06234CD2E300455960 /* TabBarViewController.xib in Resources */,
 				4948800A2300C92C001BEE92 /* OverviewTableViewCell.xib in Resources */,
 				497B1D8222FF73DD0009452A /* GridViewController.xib in Resources */,
 				497B1DA822FF82690009452A /* MovieCollectionViewCell.xib in Resources */,
@@ -1022,6 +1055,7 @@
 			files = (
 				49741AA722FC71A500E488AD /* PartModelToEntity.swift in Sources */,
 				494442EC22FBDCDB00889BF2 /* ProductionCountryModel.swift in Sources */,
+				49C75E01234CD15600455960 /* GridCoordinator.swift in Sources */,
 				49329BC023020BDF00438655 /* FavoriteMovieViewToModel.swift in Sources */,
 				49488030230112EA001BEE92 /* ios-recruiting-hsa.xcdatamodeld in Sources */,
 				494442C822FBD30100889BF2 /* CodableHelper.swift in Sources */,
@@ -1031,7 +1065,9 @@
 				49329BBE23020B7500438655 /* FavoriteMovieModel.swift in Sources */,
 				494442F222FBDDCD00889BF2 /* SpokenLanguageModel.swift in Sources */,
 				497B1D8C22FF75490009452A /* GridPresenter.swift in Sources */,
+				49C75E11234D2F3A00455960 /* DetailViewFactory.swift in Sources */,
 				49741AA922FC82A900E488AD /* Constants.swift in Sources */,
+				49C75E05234CD2E300455960 /* TabBarViewController.swift in Sources */,
 				494880092300C92C001BEE92 /* OverviewTableViewCell.swift in Sources */,
 				494442E822FBDB6F00889BF2 /* ProductionCompanyModelToEntity.swift in Sources */,
 				497B1D9C22FF7BAF0009452A /* MovieDetailView.swift in Sources */,
@@ -1041,8 +1077,10 @@
 				49487FF423008261001BEE92 /* BaseView.swift in Sources */,
 				494442D122FBD30100889BF2 /* MovieRestApi.swift in Sources */,
 				49329BBA2301FAD100438655 /* FavoriteDelegate.swift in Sources */,
-				49487FDE23006654001BEE92 /* MovieFactory.swift in Sources */,
+				49487FDE23006654001BEE92 /* TabBarViewFactory.swift in Sources */,
 				4948800C2300D3C9001BEE92 /* DetailViewDelegate.swift in Sources */,
+				49C75E0F234D24FE00455960 /* FavoriteCoordinatorImpl.swift in Sources */,
+				49C75E09234CD3DE00455960 /* GridCoordinatorImpl.swift in Sources */,
 				49741A9B22FC596E00E488AD /* PartEntity.swift in Sources */,
 				49329B9D2301BEE400438655 /* MovieLocalDataimpl.swift in Sources */,
 				49487FF123007F51001BEE92 /* DetailViewDataSource.swift in Sources */,
@@ -1057,7 +1095,9 @@
 				497B1D8122FF73DD0009452A /* GridViewController.swift in Sources */,
 				49329BBC2302083600438655 /* FavoriteConstants.swift in Sources */,
 				49487FE423006702001BEE92 /* DetailView.swift in Sources */,
+				49C75E0B234D21AA00455960 /* Coordinator.swift in Sources */,
 				49487FED23007D7D001BEE92 /* DetailViewController.swift in Sources */,
+				49C75E0D234D24CB00455960 /* FavoriteCoordinator.swift in Sources */,
 				497B1D9A22FF7BAF0009452A /* MovieView.swift in Sources */,
 				49329BA52301E82400438655 /* FavoriteView.swift in Sources */,
 				49741AAC22FC864A00E488AD /* MovieUseCase.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MovieFactory.swift
+//  TabBarViewFactory.swift
 //  ios-recruiting-hsa
 //
 //  Created on 10-08-19.
@@ -7,31 +7,30 @@
 
 import UIKit
 
-class MovieFactory {
+class TabBarViewFactory {
     private let serviceLocator: ServiceLocator
     
     init(serviceLocator: ServiceLocator) {
         self.serviceLocator = serviceLocator
     }
     
-    func tabBarController() -> UITabBarController {
-        let viewController = UITabBarController()
-        
+    func viewController() -> UITabBarController {
         let gridController = gridViewController()
-        gridController.tabBarItem = UITabBarItem(title: Constants.Labels.gridTitle,
-                                                 image: UIImage(named: "list_icon"),
-                                                 tag: 0
+        let gridCoordinator = GridCoordinatorImpl(
+            viewController: gridController,
+            navigationController: UINavigationController()
         )
         
-        let favoritesController = favoritesViewController()
-        favoritesController.tabBarItem = UITabBarItem(title: Constants.Labels.favoritesTitle,
-                                                      image: UIImage(named: "favorite_empty_icon"),
-                                                      tag: 1
+        let favoriteController = favoriteViewController()
+        let favoriteCoordinator = FavoriteCoordinatorImpl(
+            viewController: favoriteController,
+            navigationController: UINavigationController()
         )
         
-        viewController.viewControllers = [gridController, favoritesController].map { UINavigationController(rootViewController: $0)}
-        viewController.tabBar.barTintColor = Constants.Colors.brand
-        viewController.tabBar.tintColor = .black
+        let viewController = TabBarViewController(
+            gridCoordinator: gridCoordinator,
+            favoriteCoordinator: favoriteCoordinator
+        )
         
         return viewController
     }
@@ -54,7 +53,7 @@ class MovieFactory {
         return viewController
     }
     
-    private func favoritesViewController() -> UIViewController {
+    private func favoriteViewController() -> UIViewController {
         let presenter = serviceLocator.favoritePresenter
         let delegate = FavoriteViewDelegate()
         let datasource = FavoriteViewDataSource()
@@ -68,7 +67,7 @@ class MovieFactory {
         return viewController
     }
     
-    func detailViewController() -> UIViewController {
+    private func detailViewController() -> UIViewController {
         let presenter = serviceLocator.detailPresenter
         let delegate = DetailViewDelegate()
         let datasource = DetailViewDataSource()

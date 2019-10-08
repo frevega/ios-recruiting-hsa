@@ -17,6 +17,8 @@ class GridViewController: BaseViewController {
     private let datasource: GridViewDataSource
     private let prefetchDataSource: GridViewPrefetchDataSource
     private let searchResultsDelegate: GridSearchResultsDelegate
+    weak var coordinator: GridCoordinator?
+    
     var movies: [MovieView] {
         return presenter.getMovies()
     }
@@ -85,6 +87,7 @@ class GridViewController: BaseViewController {
     private func prepareNavigationItem() {
         title = Constants.Labels.gridTitle
         navigationItem.searchController = searchController
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
@@ -130,10 +133,6 @@ class GridViewController: BaseViewController {
     @objc
     func hideKeyboard() {
         searchController.searchBar.endEditing(true)
-    }
-    
-    func pushViewController(viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func localSearchPopularMovies(text: String) {

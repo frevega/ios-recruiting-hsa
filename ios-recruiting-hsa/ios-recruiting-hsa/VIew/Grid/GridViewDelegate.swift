@@ -17,11 +17,12 @@ class GridViewDelegate: NSObject {
 
 extension GridViewDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let view = view, let viewController = ViewFactory.viewController(viewType: .detail) as? DetailViewController {
+        if let view = view/*, let viewController = ViewFactory.viewController(viewType: .detail) as? DetailViewController*/ {
             var data = view.isSearchActive ? view.localSearchedMovies : view.movies
-            viewController.movieId = data[indexPath.row].id
-            viewController.hidesBottomBarWhenPushed = true
-            view.pushViewController(viewController: viewController)
+//            viewController.movieId = data[indexPath.row].id
+//            viewController.hidesBottomBarWhenPushed = true
+//            view.pushViewController(viewController: viewController)
+            view.coordinator?.goToDetail(id: data[indexPath.row].id)
         }
     }
     
@@ -29,10 +30,6 @@ extension GridViewDelegate: UICollectionViewDelegateFlowLayout {
         if let view = view {
             let indexPathsToReload = view.visibleIndexPathsToReload(intersecting: view.collectionView.indexPathsForVisibleItems)
             view.collectionView.reloadItems(at: indexPathsToReload)
-//            print("\(view.collectionView.contentOffset.y) \(view.collectionView.contentSize.height - view.collectionView.frame.size.height)")
-//            if view.collectionView.contentOffset.y >= (view.collectionView.contentSize.height - view.collectionView.frame.size.height) {
-//                view.endOfCollectionReached()
-//            }
         }
     }
     

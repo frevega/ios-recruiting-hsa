@@ -41,6 +41,7 @@ class DetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         title = Constants.Labels.detailTitle
         delegate.attach(view: self)
         datasource.attach(view: self)
