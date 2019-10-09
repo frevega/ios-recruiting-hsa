@@ -8,29 +8,31 @@
 import UIKit
 
 class GridCoordinatorImpl: GridCoordinator {
-    var viewController: UIViewController
-    var navigationController: UINavigationController
+    private let viewController: UIViewController
+    let navigationController: UINavigationController
     
     init(viewController: UIViewController,
          navigationController: UINavigationController
     ) {
         self.viewController = viewController
         self.navigationController = navigationController
+        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.viewControllers = [viewController]
         prepareViewController()
     }
     
     private func prepareViewController() {
-        if let viewController = viewController as? GridViewController {
-            viewController.coordinator = self
-            viewController.tabBarItem = UITabBarItem(title: Constants.Labels.gridTitle,
-                                                     image: UIImage(named: "list_icon"),
-                                                     tag: 0
-            )
+        if let viewController = viewController as? GridView {
+            viewController.attach(coordinator: self)
         }
+        viewController.tabBarItem = UITabBarItem(
+            title: Constants.Labels.gridTitle,
+            image: UIImage(named: "list_icon"),
+            tag: 0
+        )
     }
     
-    func goToDetail(id: Int) {
+    func showDetail(id: Int) {
         if let detailController = ViewFactory.viewController(viewType: .detail) as? DetailViewController {
             detailController.movieId = id
             detailController.hidesBottomBarWhenPushed = true

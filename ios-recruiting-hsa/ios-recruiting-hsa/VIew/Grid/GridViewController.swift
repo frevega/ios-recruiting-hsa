@@ -17,7 +17,7 @@ class GridViewController: BaseViewController {
     private let datasource: GridViewDataSource
     private let prefetchDataSource: GridViewPrefetchDataSource
     private let searchResultsDelegate: GridSearchResultsDelegate
-    weak var coordinator: GridCoordinator?
+    private weak var coordinator: GridCoordinator?
     
     var movies: [MovieView] {
         return presenter.getMovies()
@@ -87,8 +87,8 @@ class GridViewController: BaseViewController {
     private func prepareNavigationItem() {
         title = Constants.Labels.gridTitle
         navigationItem.searchController = searchController
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.largeTitleDisplayMode = .automatic
     }
     
     private func prepareCollectionView() {
@@ -138,6 +138,10 @@ class GridViewController: BaseViewController {
     func localSearchPopularMovies(text: String) {
         presenter.localSearchPopularMovies(text: text)
     }
+    
+    func showDetail(id: Int) {
+        coordinator?.showDetail(id: id)
+    }
 }
 
 extension GridViewController: GridView {
@@ -152,6 +156,10 @@ extension GridViewController: GridView {
             let indexPathsToReload = visibleIndexPathsToReload(intersecting: indexes)
             collectionView.reloadItems(at: indexPathsToReload)
         }
+    }
+    
+    func attach(coordinator: GridCoordinator) {
+        self.coordinator = coordinator
     }
 }
 

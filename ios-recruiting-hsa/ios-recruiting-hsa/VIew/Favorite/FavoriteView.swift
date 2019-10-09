@@ -7,4 +7,5 @@
 
 protocol FavoriteView: BaseView {
     func show()
+    func attach(coordinator: FavoriteCoordinator)
 }

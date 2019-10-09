@@ -8,11 +8,11 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-    private let gridCoordinator: GridCoordinator
-    private let favoriteCoordinator: FavoriteCoordinator
+    private let gridCoordinator: Coordinator
+    private let favoriteCoordinator: Coordinator
     
-    init(gridCoordinator: GridCoordinator,
-         favoriteCoordinator: FavoriteCoordinator
+    init(gridCoordinator: Coordinator,
+         favoriteCoordinator: Coordinator
     ) {
         self.gridCoordinator = gridCoordinator
         self.favoriteCoordinator = favoriteCoordinator
@@ -25,10 +25,16 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        childrenControllers()
+        prepareTabBar()
+        prepareViewControllers()
     }
     
-    private func childrenControllers() {
+    private func prepareTabBar() {
+        tabBar.barTintColor = Constants.Colors.brand
+        tabBar.tintColor = .black
+    }
+    
+    private func prepareViewControllers() {
         viewControllers = [
             gridCoordinator.navigationController,
             favoriteCoordinator.navigationController

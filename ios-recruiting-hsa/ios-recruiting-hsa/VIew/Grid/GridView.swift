@@ -9,4 +9,5 @@ import Foundation
 
 protocol GridView: BaseView {
     func show(rows indexes: [IndexPath]?, shouldReload: Bool)
+    func attach(coordinator: GridCoordinator)
 }

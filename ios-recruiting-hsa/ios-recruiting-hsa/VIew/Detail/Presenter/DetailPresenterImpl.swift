@@ -6,7 +6,7 @@
 //
 
 class DetailPresenterImpl {
-    weak var view: DetailView?
+    private weak var view: DetailView?
     private let movieUseCase: MovieUseCase
     private let movieDetailViewToFavoriteMovieModel: Mapper<MovieDetailView, FavoriteMovieModel>
     private let movieDetailViewToModel: Mapper<MovieDetailView, MovieDetailModel>

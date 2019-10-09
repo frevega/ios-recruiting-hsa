@@ -6,7 +6,7 @@
 //
 
 class FavoritePresenterImpl {
-    weak var view: FavoriteView?
+    private weak var view: FavoriteView?
     private let movieUseCase: MovieUseCase
     private let favoriteMovieViewToModel: Mapper<FavoriteMovieView, FavoriteMovieModel>
     private let errorViewToModel: Mapper<ErrorView, ErrorModel>

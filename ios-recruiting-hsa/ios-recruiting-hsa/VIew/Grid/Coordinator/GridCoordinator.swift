@@ -6,5 +6,5 @@
 //
 
 protocol GridCoordinator: Coordinator {
-    func goToDetail(id: Int)
+    func showDetail(id: Int)
 }

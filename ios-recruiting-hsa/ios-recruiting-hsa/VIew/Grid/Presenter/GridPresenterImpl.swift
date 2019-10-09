@@ -8,7 +8,7 @@
 import Foundation
 
 class GridPresenterImpl {
-    weak var view: GridView?
+    private weak var view: GridView?
     private let movieUseCase: MovieUseCase
     private let movieResponseViewToModel: Mapper<MovieResponseView, MovieResponseModel>
     private let errorViewToModel: Mapper<ErrorView, ErrorModel>

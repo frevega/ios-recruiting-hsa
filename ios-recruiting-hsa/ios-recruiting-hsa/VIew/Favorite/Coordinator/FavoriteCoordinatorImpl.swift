@@ -21,9 +21,13 @@ class FavoriteCoordinatorImpl: FavoriteCoordinator {
     }
     
     private func prepareViewController() {
-        viewController.tabBarItem = UITabBarItem(title: Constants.Labels.favoritesTitle,
-                                                 image: UIImage(named: "favorite_empty_icon"),
-                                                 tag: 1
+        if let viewController = viewController as? FavoriteView {
+            viewController.attach(coordinator: self)
+        }
+        viewController.tabBarItem = UITabBarItem(
+            title: Constants.Labels.favoritesTitle,
+            image: UIImage(named: "favorite_empty_icon"),
+            tag: 1
         )
     }
 }

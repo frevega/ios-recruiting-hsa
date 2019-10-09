@@ -17,12 +17,9 @@ class GridViewDelegate: NSObject {
 
 extension GridViewDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let view = view/*, let viewController = ViewFactory.viewController(viewType: .detail) as? DetailViewController*/ {
-            var data = view.isSearchActive ? view.localSearchedMovies : view.movies
-//            viewController.movieId = data[indexPath.row].id
-//            viewController.hidesBottomBarWhenPushed = true
-//            view.pushViewController(viewController: viewController)
-            view.coordinator?.goToDetail(id: data[indexPath.row].id)
+        if let view = view {
+            let data = view.isSearchActive ? view.localSearchedMovies : view.movies
+            view.showDetail(id: data[indexPath.row].id)
         }
     }
     

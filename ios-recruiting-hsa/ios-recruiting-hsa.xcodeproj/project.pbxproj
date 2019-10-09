@@ -557,6 +557,7 @@
 		49487FF22300821E001BEE92 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				49C75E0A234D21AA00455960 /* Coordinator.swift */,
 				49487FF323008261001BEE92 /* BaseView.swift */,
 				49487FF5230082A1001BEE92 /* BaseViewController.swift */,
 			);
@@ -678,6 +679,24 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		4972229C234D74BB00EF2854 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				49C75E00234CD15600455960 /* GridCoordinator.swift */,
+				49C75E08234CD3DE00455960 /* GridCoordinatorImpl.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		4972229D234D74DD00EF2854 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				49C75E0C234D24CB00455960 /* FavoriteCoordinator.swift */,
+				49C75E0E234D24FE00455960 /* FavoriteCoordinatorImpl.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		49741AAA22FC85F900E488AD /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +718,7 @@
 			children = (
 				497B1D7822FF73300009452A /* Cell */,
 				497B1D8A22FF752A0009452A /* Presenter */,
+				4972229C234D74BB00EF2854 /* Coordinator */,
 				497B1D8322FF74500009452A /* GridView.swift */,
 				497B1D7F22FF73DD0009452A /* GridViewController.swift */,
 				497B1D8022FF73DD0009452A /* GridViewController.xib */,
@@ -783,6 +803,7 @@
 			children = (
 				49329BA22301E7F100438655 /* Cell */,
 				49329BA32301E80D00438655 /* Presenter */,
+				4972229D234D74DD00EF2854 /* Coordinator */,
 				49329BA42301E82400438655 /* FavoriteView.swift */,
 				49329BA62301E87F00438655 /* FavoriteViewController.swift */,
 				49329BA72301E87F00438655 /* FavoriteViewController.xib */,
@@ -839,11 +860,6 @@
 		49C75E02234CD24900455960 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				49C75E0A234D21AA00455960 /* Coordinator.swift */,
-				49C75E00234CD15600455960 /* GridCoordinator.swift */,
-				49C75E08234CD3DE00455960 /* GridCoordinatorImpl.swift */,
-				49C75E0C234D24CB00455960 /* FavoriteCoordinator.swift */,
-				49C75E0E234D24FE00455960 /* FavoriteCoordinatorImpl.swift */,
 				49C75E03234CD2E300455960 /* TabBarViewController.swift */,
 				49C75E04234CD2E300455960 /* TabBarViewController.xib */,
 			);

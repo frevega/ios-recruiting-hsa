@@ -13,6 +13,7 @@ class FavoriteViewController: BaseViewController {
     private let presenter: FavoritePresenter
     private let delegate: FavoriteViewDelegate
     private let datasource: FavoriteViewDataSource
+    private weak var coordinator: FavoriteCoordinator?
     var movies: [FavoriteMovieView] {
         return presenter.favoriteMovieArray()
     }
@@ -81,5 +82,9 @@ extension FavoriteViewController: FavoriteView {
         }
         
         tableView.reloadData()
+    }
+    
+    func attach(coordinator: FavoriteCoordinator) {
+        self.coordinator = coordinator
     }
 }

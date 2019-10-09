@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewDelegate: NSObject {
-    private var view: DetailViewController?
+    private weak var view: DetailViewController?
     
     func attach(view: DetailViewController) {
         self.view = view

@@ -8,6 +8,6 @@
 import UIKit
 
 protocol Coordinator: class {
-    var viewController: UIViewController { get set }
-    var navigationController: UINavigationController { get set }
+//    var viewController: UIViewController { get }
+    var navigationController: UINavigationController { get }
 }

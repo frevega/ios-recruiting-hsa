@@ -23,9 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func navigationBarAppearance(){
-        UINavigationBar.appearance().barTintColor = Constants.Colors.brand
+        let textColor = [NSAttributedString.Key.foregroundColor: UIColor.black]
         UINavigationBar.appearance().tintColor = Constants.Colors.dark
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().titleTextAttributes = textColor
+        if #available(iOS 13.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+//            navigationBarAppearance.titleTextAttributes = textColor
+//            navigationBarAppearance.largeTitleTextAttributes = textColor
+            navigationBarAppearance.backgroundColor = Constants.Colors.brand
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        } else {
+            UINavigationBar.appearance().barTintColor = Constants.Colors.brand
+//            UINavigationBar.appearance().titleTextAttributes = textColor
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
